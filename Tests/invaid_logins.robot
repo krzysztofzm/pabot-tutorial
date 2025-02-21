@@ -21,6 +21,9 @@ Invalid Login
     [Arguments]    ${user}    ${password}
     [Setup]    common.Open Swag Labs
     common.Log in to Swag Labs    ${user}    ${password}
-    Browser.Get Element States    id=${login_page.login_button_id}    *=    visible
+    Verify that the user didn't log in
     [Teardown]    Basic teardown
 
+Verify that the user didn't log in
+    Browser.Get Element States    id=${login_page.login_button_id}    *=    visible
+    
