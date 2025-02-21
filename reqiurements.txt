@@ -1,3 +1,4 @@
 robotframework==7.2
 robotframework-pabot==4.1.1
 robotframework-browser==19.3.1
+pyyaml

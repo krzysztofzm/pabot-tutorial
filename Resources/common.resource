@@ -1,6 +1,8 @@
 ***Settings***
-Library    pabot.PabotLib
-Library    BuiltIn
+Library      pabot.PabotLib
+Library      Browser
+
+Variables    ../Locators/login_page.yaml
 
 ***Variables***
 ${EXECUTION_START_TIME}    ${None}
@@ -15,3 +17,40 @@ Set Start Time
     ${start_time}    Get Time    epoch
     VAR    ${EXECUTION_START_TIME}    ${start_time}    scope=GLOBAL
     Log    Execution start time recorded: ${start_time}
+
+Open Swag Labs
+    [Documentation]    opens the .
+    [Tags]    browserlibrary
+    [Arguments]
+    ...    ${timeout}=0:00:30
+    ...    ${browser}=chromium
+    ...    ${headless}=${False}
+    ...    ${slowMo}=0:00:01
+    ...    ${window height}=1080
+    ...    ${window width}=1920
+    ...    ${domain suffix}=${EMPTY}
+    ...    ${executable_path}=${None}
+    Browser.New Browser
+    ...    browser=${browser}
+    ...    headless=${headless}
+    ...    slowMo=${slowMo}
+    ...    executablePath=${executable_path}
+    Browser.Set browser timeout    ${timeout}
+    VAR    ${URL}=    https://www.saucedemo.com/
+    Browser.New context
+    ...    viewport={'width': ${window width}, 'height': ${window height}}
+    Browser.New page
+    ...    url=${URL}
+
+
+Log in to Swag Labs
+    [Documentation]    Perform login with given user's login and password.
+    [Arguments]    ${user}    ${password}
+    Browser.Fill text    id=${login_page.login_field_id}    ${user}
+    Browser.Fill secret    id=${login_page.password_field_id}    $password
+    # Browser.Get text    id=${login_page.login_field_id}    equal    ${user}
+    Browser.Click    id=${login_page.login_button_id}
+
+Basic teardown
+    [Documentation]    Close browser upon end of test during teardown.
+    Browser.Close Browser    ALL

@@ -1,0 +1,4 @@
+--pythonpath Resources/
+--pythonpath Locators/
+
+--outputdir results/
