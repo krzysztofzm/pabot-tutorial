@@ -1,0 +1,10 @@
+cart:
+  item_name: //*[@id="item_4_title_link"]/div
+  checkout_id: checkout
+  checkout_form:
+    first_name_id: first-name
+    last_name_id: last-name
+    zip_id: postal-code
+    continue_btn_id: continue
+    finish_btn_id: finish
+    status: //*[@id="checkout_complete_container"]/h2

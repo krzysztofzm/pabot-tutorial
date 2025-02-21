@@ -1,18 +1,19 @@
 *** Settings ***
-Resource    common.resource
+Resource     common.resource
+Variables    users.yaml
 
 Suite Setup    common.Record Execution Start Time
 
 Test Template    Invalid Login
 
-*** Test Cases ***                  USERNAME           PASSWORD
-Invalid user name                   some_user          secret_sauce
-Invalid password                    standard_user      some_password
-Invalid user name and password      some_user          some_password
-Locked out user                     locked_out_user    secret_sauce
-Empty user                          ${EMPTY}           secret_sauce
-Empty password                      standard_user      ${EMPTY}
-Empty user and password             ${EMPTY}           ${EMPTY}
+*** Test Cases ***                  USERNAME              PASSWORD
+Invalid user name                   some_user             ${password.valid}
+Invalid password                    ${user.standard}      ${password.invalid}
+Invalid user name and password      some_user             ${password.invalid}
+Locked out user                     ${user.locked_out}    ${password.valid}
+Empty user                          ${EMPTY}              ${password.valid}
+Empty password                      ${user.standard}      ${EMPTY}
+Empty user and password             ${EMPTY}              ${EMPTY}
 
 
 

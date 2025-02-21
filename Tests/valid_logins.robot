@@ -1,22 +1,21 @@
 *** Settings ***
 Resource    common.resource
+Variables    users.yaml
 
 Suite Setup    common.Record Execution Start Time
 
 Test Template    Valid Login
 
 *** Variables ***
-${STANDARD USER}    standard_user
-${PASSWORD}         secret_sauce
 ${INVENTORY URL}    https://www.saucedemo.com/inventory.html
 
 
-*** Test Cases ***               USERNAME                   PASSWORD
-Standard user login              ${STANDARD USER}           ${PASSWORD}
-Problem user login               problem_user               ${PASSWORD}
-Performance glitch user login    performance_glitch_user    ${PASSWORD}
-Error user login                 error_user                 ${PASSWORD}
-Visual user login                visual_user                ${PASSWORD}
+*** Test Cases ***               USERNAME                      PASSWORD
+Standard user login              ${user.standard}              ${password.valid}
+Problem user login               ${user.problem}               ${password.valid}
+Performance glitch user login    ${user.performance_glitch}    ${password.valid}
+Error user login                 ${user.error}                 ${password.valid}
+Visual user login                ${user.visual}                ${password.valid}
 
 
 

@@ -1,0 +1,12 @@
+user:
+  
+  standard: standard_user
+  locked_out: locked_out_user
+  problem: problem_user
+  performance_glitch: performance_glitch_user
+  error: error_user
+  visual: visual_user
+
+password: 
+  valid: secret_sauce
+  invalid: some_password

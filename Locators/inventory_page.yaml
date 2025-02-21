@@ -1,0 +1,3 @@
+inventory:
+  add_item_to_cart_id: add-to-cart-sauce-labs-{}
+  go_to_cart_id: shopping_cart_container

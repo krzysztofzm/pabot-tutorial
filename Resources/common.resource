@@ -2,7 +2,7 @@
 Library      pabot.PabotLib
 Library      Browser
 
-Variables    ../Locators/login_page.yaml
+Variables    login_page.yaml
 
 ***Variables***
 ${EXECUTION_START_TIME}    ${None}
@@ -26,8 +26,8 @@ Open Swag Labs
     ...    ${browser}=chromium
     ...    ${headless}=${False}
     ...    ${slowMo}=0:00:01
-    ...    ${window height}=1080
-    ...    ${window width}=1920
+    ...    ${window height}=768
+    ...    ${window width}=1360
     ...    ${domain suffix}=${EMPTY}
     ...    ${executable_path}=${None}
     Browser.New Browser
