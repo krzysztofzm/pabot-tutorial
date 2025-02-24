@@ -14,7 +14,7 @@ Record Execution Start Time
 
 Set Start Time
     [Documentation]    Sets the execution start time using the `Set Global Variable` keyword.
-    ${start_time}    Get Time    epoch
+    ${start_time}    Get Time
     VAR    ${EXECUTION_START_TIME}    ${start_time}    scope=GLOBAL
     Log    Execution start time recorded: ${start_time}
 
@@ -26,8 +26,8 @@ Open Swag Labs
     ...    ${browser}=chromium
     ...    ${headless}=${False}
     ...    ${slowMo}=0:00:01
-    ...    ${window height}=768
-    ...    ${window width}=1360
+    ...    ${window height}=750
+    ...    ${window width}=1200
     ...    ${domain suffix}=${EMPTY}
     ...    ${executable_path}=${None}
     Browser.New Browser
