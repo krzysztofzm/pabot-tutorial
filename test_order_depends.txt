@@ -1,0 +1,17 @@
+--test Tests.Purchase.Standard user buys  #DEPENDS Tests.Valid Logins.Standard user login
+--test Tests.Purchase.Problem user buys #DEPENDS Tests.Valid Logins.Problem user login
+--test Tests.Purchase.Performance glitch user buys #DEPENDS Tests.Valid Logins.Performance glitch user login
+--test Tests.Purchase.Error user buys #DEPENDS Tests.Valid Logins.Error user login
+--test Tests.Purchase.Visual user buys #DEPENDS Tests.Valid Logins.Visual user login
+--test Tests.Valid Logins.Standard user login
+--test Tests.Valid Logins.Problem user login
+--test Tests.Valid Logins.Performance glitch user login
+--test Tests.Valid Logins.Error user login
+--test Tests.Valid Logins.Visual user login
+--test Tests.Invalid Logins.Invalid user name
+--test Tests.Invalid Logins.Invalid password
+--test Tests.Invalid Logins.Invalid user name and password
+--test Tests.Invalid Logins.Locked out user
+--test Tests.Invalid Logins.Empty user
+--test Tests.Invalid Logins.Empty password
+--test Tests.Invalid Logins.Empty user and password
