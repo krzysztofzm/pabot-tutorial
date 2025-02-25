@@ -1,0 +1,6 @@
+--pythonpath Resources/
+--pythonpath Locators/
+
+--variable BROWSER:firefox
+
+--outputdir results/
