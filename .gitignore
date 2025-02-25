@@ -1,4 +1,8 @@
 venv
 results
+pabot_results
 test_prototype.md
 .pabotsuitenames
+log.html
+output.xml
+report.html

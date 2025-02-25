@@ -9,6 +9,7 @@ Suite Setup    common.Record Execution Start Time
 
 Test Template    Buy something
 
+
 *** Test Cases ***              USERNAME                      PASSWORD             ITEM
 Standard user buys              ${user.standard}              ${password.valid}    backpack
 Problem user buys               ${user.problem}               ${password.valid}    backpack

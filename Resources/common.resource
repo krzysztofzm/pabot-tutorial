@@ -6,6 +6,7 @@ Variables    login_page.yaml
 
 ***Variables***
 ${EXECUTION_START_TIME}    ${None}
+${BROWSER}    chromium
 
 ***Keywords***
 Record Execution Start Time
@@ -23,7 +24,7 @@ Open Swag Labs
     [Tags]    browserlibrary
     [Arguments]
     ...    ${timeout}=0:00:30
-    ...    ${browser}=chromium
+    ...    ${browser}=${BROWSER}
     ...    ${headless}=${False}
     ...    ${slowMo}=0:00:01
     ...    ${window height}=750
