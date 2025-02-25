@@ -5,7 +5,7 @@ Resource     cart.resource
 
 Variables    users.yaml
 
-Suite Setup    common.Record Execution Start Time
+# Suite Setup    common.Record Execution Start Time
 
 Test Template    Buy something
 
