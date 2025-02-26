@@ -20,7 +20,7 @@ Visual user buys                ${user.visual}                ${password.valid} 
 *** Keywords ***
 Buy something
     [Arguments]    ${user}    ${password}    ${item}
-    [Setup]    Open page and login    ${user}    ${password}
+    [Setup]    Setup purchase test    ${user}    ${password}
     inventory.Add ${item} to cart
     inventory.Go to cart
     cart.Check if item is in cart    ${item}
@@ -33,3 +33,13 @@ Open page and login
     [Arguments]    ${user}    ${password}
     common.Open Swag Labs
     common.Log in to Swag Labs    ${user}    ${password}
+
+Check if skip this test
+    [Documentation]    Checks if the precondition for the test are met, if not test will be skipped.
+    ${valid test status}=    pabot.PabotLib.Get Parallel Value For Key    valid_logins_status
+    Skip If    $valid_test_status == False    The valid login tests failed, for that reason this test is skipped.
+
+Setup purchase test
+    [Arguments]    ${user}    ${password}
+    Check if skip this test
+    Open page and login    ${user}    ${password}
