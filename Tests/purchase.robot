@@ -3,34 +3,32 @@ Resource     common.resource
 Resource     inventory.resource
 Resource     cart.resource
 
-Variables    users.yaml
-
 Test Template    Buy something
 
 
-*** Test Cases ***              USERNAME                      PASSWORD             ITEM
-Standard user buys              ${user.standard}              ${password.valid}    backpack
-Problem user buys               ${user.problem}               ${password.valid}    backpack
-Performance glitch user buys    ${user.performance_glitch}    ${password.valid}    backpack
-Error user buys                 ${user.error}                 ${password.valid}    backpack
-Visual user buys                ${user.visual}                ${password.valid}    backpack
+*** Test Cases ***              USER TAG              ITEM
+Standard user buys              standard              backpack
+Problem user buys               problem               backpack
+Performance glitch user buys    performance_glitch    backpack
+Error user buys                 error                 backpack
+Visual user buys                visual                backpack
 
 *** Keywords ***
 Buy something
-    [Arguments]    ${user}    ${password}    ${item}
-    [Setup]    Setup purchase test    ${user}    ${password}
+    [Arguments]    ${user tag}    ${item}
+    [Setup]    Setup purchase test
+    ${credentials}=    pabot.PabotLib.Acquire Value Set    ${user tag}
+    ${user}=    pabot.PabotLib.Get Value From Set    user
+    ${password}=    pabot.PabotLib.Get Value From Set    password
+    common.Log in to Swag Labs    ${user}    ${password}
     inventory.Add ${item} to cart
     inventory.Go to cart
     cart.Check if item is in cart    ${item}
     cart.Checkout cart
     cart.Fill checkout form and finalize the purchase
     cart.Check if purchase is successful
+    pabot.PabotLib.Release Value Set
     [Teardown]    common.Basic teardown
-
-Open page and login
-    [Arguments]    ${user}    ${password}
-    common.Open Swag Labs
-    common.Log in to Swag Labs    ${user}    ${password}
 
 Check if skip this test
     [Documentation]    Checks if the precondition for the test are met, if not test will be skipped.
@@ -38,6 +36,5 @@ Check if skip this test
     Skip If    $valid_test_status == False    The valid login tests failed, for that reason this test is skipped.
 
 Setup purchase test
-    [Arguments]    ${user}    ${password}
     Check if skip this test
-    Open page and login    ${user}    ${password}
+    common.Open Swag Labs

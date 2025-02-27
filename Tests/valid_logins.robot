@@ -1,7 +1,7 @@
 *** Settings ***
 Resource    common.resource
-Variables    users.yaml
 
+Suite Teardown    pabot.PabotLib.Run Teardown Only Once    common.Prompt that the suite has finished
 Test Teardown    Set the status of valid login tests
 
 Test Template    Valid Login
@@ -10,22 +10,26 @@ Test Template    Valid Login
 ${INVENTORY URL}    https://www.saucedemo.com/inventory.html
 
 
-*** Test Cases ***               USERNAME                      PASSWORD
-Standard user login              ${user.standard}              ${password.valid}
-Problem user login               ${user.problem}               ${password.valid}
-Performance glitch user login    ${user.performance_glitch}    ${password.valid}
-Error user login                 ${user.error}                 ${password.valid}
-Visual user login                ${user.visual}                ${password.valid}
+*** Test Cases ***               USER TAG
+Standard user login              standard
+Problem user login               problem
+Performance glitch user login    performance_glitch
+Error user login                 error
+Visual user login                visual
 
 
 
 *** Keywords ***
 Valid Login
-    [Arguments]    ${user}    ${password}
+    [Arguments]    ${user tag}
     [Setup]    common.Open Swag Labs
+    ${valueset name}=    pabot.PabotLib.Acquire Value Set    ${user tag}
+    ${user}=    pabot.PabotLib.Get Value From Set    user
+    ${password}=    pabot.PabotLib.Get Value From Set    password
     common.Log in to Swag Labs    ${user}    ${password}
     Verify that the user did log in
-    [Teardown]    Basic teardown
+    pabot.PabotLib.Release Value Set
+    [Teardown]    common.Basic teardown
 
 Verify that the user did log in
     Browser.Get Url    ==    ${INVENTORY URL}

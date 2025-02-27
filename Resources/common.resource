@@ -1,6 +1,7 @@
 ***Settings***
 Library      pabot.PabotLib
 Library      Browser
+Library      Dialogs
 
 Variables    login_page.yaml
 
@@ -55,3 +56,8 @@ Log in to Swag Labs
 Basic teardown
     [Documentation]    Close browser upon end of test during teardown.
     Browser.Close Browser    ALL
+
+Prompt that the suite has finished
+    pabot.PabotLib.Acquire Lock    suite_status
+    Dialogs.Pause Execution    The ${SUITE_NAME} has ${SUITE_STATUS}. Click OK to proceed.
+    pabot.PabotLib.Release Lock    suite_status
