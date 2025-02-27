@@ -2,9 +2,6 @@
 Resource    common.resource
 Variables    users.yaml
 
-# Suite Setup    common.Record Execution Start Time
-#Suite Teardown    pabot.PabotLib.Run Teardown Only Once    Set the status of valid login tests
-
 Test Teardown    Set the status of valid login tests
 
 Test Template    Valid Login
@@ -37,4 +34,3 @@ Set the status of valid login tests
     [Documentation]    Sets the value of valid login tests to true if all test pass.
     Log   ${TEST_STATUS}
     IF    '${TEST_STATUS}' == 'FAIL'    pabot.PabotLib.Set Parallel Value For Key       valid_logins_status    ${False}
-    

@@ -2,8 +2,6 @@
 Resource     common.resource
 Variables    users.yaml
 
-# Suite Setup    common.Record Execution Start Time
-
 Test Template    Invalid Login
 
 *** Test Cases ***                  USERNAME              PASSWORD
