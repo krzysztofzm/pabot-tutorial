@@ -1,7 +1,7 @@
 *** Settings ***
 Resource    common.resource
 
-Suite Teardown    pabot.PabotLib.Run Teardown Only Once    common.Prompt that the suite has finished
+# Suite Teardown    pabot.PabotLib.Run Teardown Only Once    common.Prompt that the suite has finished
 Test Teardown    Set the status of valid login tests
 
 Test Template    Valid Login

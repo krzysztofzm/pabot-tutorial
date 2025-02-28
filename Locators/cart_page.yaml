@@ -1,5 +1,5 @@
 cart:
-  item_name: //*[@id="item_4_title_link"]/div
+  item_name: //div[@class="inventory_item_name"]
   checkout_id: checkout
   checkout_form:
     first_name_id: first-name

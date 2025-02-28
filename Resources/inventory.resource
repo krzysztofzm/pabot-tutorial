@@ -6,6 +6,7 @@ Variables    inventory_page.yaml
 
 *** Keywords ***
 Add ${item} to cart
+    ${item}=    String.Replace String    ${item}    ${SPACE}    -
     ${item to add}=     String.Format String    ${inventory.add_item_to_cart_id}    ${item}
     Browser.Click    id=${item to add}
 
